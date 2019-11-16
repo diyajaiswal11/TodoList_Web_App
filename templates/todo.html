@@ -1,0 +1,25 @@
+<h1>This is todo page</h1>
+<!--
+<ul>
+    <li>Item A</li>
+    <li>Item B</li>
+</ul>
+-->
+
+<ul>
+    {% for x in all_items %}
+    <li>{{ x.content }}
+    <form action="/deleteTodo/{{x.id}}/" 
+          style="display: inline;"
+          method="post">{% csrf_token %}
+        <input type="submit" value="Delete">
+    </form>
+    </li>
+    <br>
+    {% endfor %}
+</ul> 
+
+<form action="/addTodo/" method="post">{% csrf_token %}
+    <input type="text" name="content">
+    <input type="submit" value="Add">
+</form>
